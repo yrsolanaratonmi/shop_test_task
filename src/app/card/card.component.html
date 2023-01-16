@@ -1,0 +1,23 @@
+<div class="card" (click)="this.alert()">
+  <img [src]="item.pic" *ngIf="item.pic" />
+  <div class="card__no-doc" *ngIf="!item.pic">
+    <svg>
+      <use [attr.xlink:href]="'assets/no_doc.svg#Doc'"></use>
+    </svg>
+  </div>
+  <div class="card__info">
+    <span class="card__info__title">{{ item.name }}</span>
+    <div class="card__info__container">
+      <svg *ngIf="!item.pic">
+        <use [attr.xlink:href]="iconsBasePath + 'Subtract'"></use>
+      </svg>
+      <svg *ngIf="item.pic && item.name.indexOf('xls') === -1">
+        <use [attr.xlink:href]="iconsBasePath + 'Union'"></use>
+      </svg>
+      <svg *ngIf="item.name.indexOf('xls') !== -1">
+        <use [attr.xlink:href]="iconsBasePath + 'Group'"></use>
+      </svg>
+      <span class="card__info__container__subtitle">{{ item.description }}</span>
+    </div>
+  </div>
+</div>
