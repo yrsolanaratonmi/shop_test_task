@@ -1,4 +1,4 @@
-<div class="card" (click)="this.alert()">
+<div class="card" (click)="this.showDialog()">
   <img [src]="item.pic" *ngIf="item.pic" />
   <div class="card__no-doc" *ngIf="!item.pic">
     <svg>
@@ -21,3 +21,22 @@
     </div>
   </div>
 </div>
+
+<p-dialog
+  header="{{ item.name }}"
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: '669px' }"
+  [draggable]="true"
+  [resizable]="false"
+>
+  <img [src]="item.pic" *ngIf="item.pic" class="big_pic" />
+  <div class="card__no-doc" *ngIf="!item.pic">
+    <svg>
+      <use [attr.xlink:href]="'assets/no_doc.svg#Doc'"></use>
+    </svg>
+  </div>
+  <ng-template pTemplate="footer">
+        <p-button (click)="visible=false" label="Close"></p-button>
+    </ng-template>
+</p-dialog>

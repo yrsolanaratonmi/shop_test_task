@@ -10,7 +10,9 @@ export class CardComponent {
 
   @Input() iconsBasePath: string = '';
 
-  public alert() {
-    alert(123);
+  public visible: boolean = false;
+
+  public showDialog() {
+    this.visible = true;
   }
 }
